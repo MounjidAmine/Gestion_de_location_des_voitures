@@ -1,0 +1,79 @@
+{% extends 'pfm/test/mainclient.html' %}
+
+{% block content %}
+<h2
+class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+>
+Vehicle Fleet
+</h2>
+<!-- CTA -->
+
+
+
+<!-- New Table -->
+<h4
+class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"
+>
+Vehicle Fleet Overview {{client.user.email}}
+</h4>
+<div class="w-full overflow-hidden rounded-lg shadow-xs">
+<div class="w-full overflow-x-auto">
+  <table id="vehicleTable" class="w-full whitespace-no-wrap">
+    <thead>
+      <tr
+        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+      >
+        <th class="px-4 py-3">fleet</th>
+        <th class="px-4 py-3">Registration</th>
+        <th class="px-4 py-3">Model</th>
+        <th class="px-4 py-3">Mileage</th>
+        <th class="px-4 py-3">Lease End Date</th>
+        <th class="px-4 py-3">Action</th>
+
+      </tr>
+    </thead>
+    <tbody
+      class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
+    >
+     {% for vechule in vechules %}
+
+      <tr class="text-gray-700 dark:text-gray-400">
+        <td class="px-4 py-3 text-sm">
+          {{vechule.id}}
+        </td>
+        <td class="px-4 py-3 text-sm">
+            {{vechule.immatriculation}}
+        </td>
+        <td class="px-4 py-3 text-xs">
+            {{vechule.modele}}
+        </td>
+        <td class="px-4 py-3 text-sm">
+            {{vechule.km}}
+        </td>
+        <td class="px-4 py-3 text-sm">
+            {{vechule.fin_liv}}
+        </td>
+        <td class="px-4 py-3">
+          <a href="/viewClient/{{vechule.id}}">
+          <div class="flex items-center space-x-4 text-sm">
+            <i class="fas fa-eye"></i>
+          </div>
+         </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+
+
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>
+{% endblock %}

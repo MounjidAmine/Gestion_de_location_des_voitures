@@ -1,0 +1,202 @@
+{% extends 'pfm/test/mainemploye.html' %}
+
+{% block content %}
+
+
+<style>
+  .flex {
+    display: flex;
+  }
+  
+  .justify-end {
+    justify-content: flex-end;
+  }
+  
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .font-medium {
+    font-weight: 500;
+  }
+  
+  .leading-5 {
+    line-height: 1.25rem;
+  }
+  
+  .text-white {
+    color: #fff;
+  }
+  
+  .transition-colors {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .duration-150 {
+    transition-duration: 150ms;
+  }
+  
+  .bg-coral {
+    background-color: coral;
+  }
+  
+  .border {
+    border-width: 1px;
+  }
+  
+  .border-transparent {
+    border-color: transparent;
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+  .active\\:bg-coral:active {
+    background-color: coral;
+  }
+  
+  .hover\\:bg-gray-700:hover {
+    background-color: #4a5568;
+  }
+  
+  .focus\\:outline-none:focus {
+    outline: none;
+  }
+  
+  .focus\\:shadow-outline-gray:focus {
+    box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.5);
+  }
+  
+  .mx-2 {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  
+  
+  
+</style>
+
+<h2
+class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+>
+Add New Vehicle Form
+</h2>
+<!-- CTA -->
+
+
+<!-- General elements -->
+<h4
+class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"
+>
+Form
+</h4>
+<div id="validation-message" class="text-red-500"></div>
+<form id="add-vehicle-form" method="POST" action='/registervechule'>
+  {% csrf_token %}
+    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+        <div id="initial-fields">
+          <div class="flex mt-4">
+            <div class="flex-1 mr-2 my-2">
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">immatriculation</span>
+                <input name="immatriculation" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" required />
+              </label>
+            </div>
+            <div class="flex-1 ml-2 my-2">
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Model</span>
+                <input name="modele" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" required  />
+              </label>
+            </div>
+          </div>
+        
+          <div class="flex mt-4">
+            <div class="flex-1 mr-2 my-4">
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">genre</span>
+                <input name="genre" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" required />
+              </label>
+            </div>
+            <div class="flex-1 ml-2 my-4">
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">puissance</span>
+                <input name="puissance" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" required />
+              </label>
+            </div>
+          </div>
+        
+          <div class="flex mt-4">
+            <div class="flex-1 mr-2 my-4">
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Age</span>
+                <input type="date" name="date_naiss" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" required />
+            </label>
+            
+            </div>
+            <div class="flex-1 mr-2 my-4">
+                <label class="block text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">km</span>
+                  <input name="km" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" required  />
+                </label>
+            </div>
+          </div>
+        
+          <div class="flex mt-4">
+            <div class="flex-1 mr-4 my-2">
+                <label class="block text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">gamme</span>
+                  <input  name="gam" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" required />
+                </label>
+            </div>
+            <div class="flex-1 mr-4 my-2"></div>
+          </div>
+        
+          
+          <div class="flex justify-end">
+            <button id="add-vehicle-button" class="px-4 py-2 mx-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-coral border border-transparent rounded-lg active:bg-coral hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray flex">
+              Add Vehicle
+          </button>
+          
+        </div>
+    </div>
+</div>
+{%for message in messages %}
+{{message}}
+{% endfor %}
+</form>
+
+
+
+  
+</body>
+</html>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('add-vehicle-form').addEventListener('submit', function (event) {
+      var immatriculation = document.getElementsByName('immatriculation')[0].value.trim();
+
+      // Check if immatriculation is empty
+      if (immatriculation === '') {
+        document.getElementById('validation-message').innerHTML = 'Immatriculation cannot be empty.';
+        event.preventDefault(); // Prevent form submission
+      } else {
+        document.getElementById('validation-message').innerHTML = ''; // Clear validation message
+      }
+    });
+  });
+</script>
+
+{% endblock %}

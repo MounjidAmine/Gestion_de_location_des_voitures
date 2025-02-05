@@ -1,0 +1,193 @@
+{% extends 'pfm/test/mainemploye.html' %}
+
+{% block content %}
+<style>
+  .flex {
+    display: flex;
+  }
+  
+  .justify-end {
+    justify-content: flex-end;
+  }
+  
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .font-medium {
+    font-weight: 500;
+  }
+  
+  .leading-5 {
+    line-height: 1.25rem;
+  }
+  
+  .text-white {
+    color: #fff;
+  }
+  
+  .transition-colors {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .duration-150 {
+    transition-duration: 150ms;
+  }
+  
+  .bg-coral {
+    background-color: coral;
+  }
+  
+  .border {
+    border-width: 1px;
+  }
+  
+  .border-transparent {
+    border-color: transparent;
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+  .active\\:bg-coral:active {
+    background-color: coral;
+  }
+  
+  .hover\\:bg-gray-700:hover {
+    background-color: #4a5568;
+  }
+  
+  .focus\\:outline-none:focus {
+    outline: none;
+  }
+  
+  .focus\\:shadow-outline-gray:focus {
+    box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.5);
+  }
+  
+  .mx-2 {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  
+  
+  
+</style>
+
+
+<h2
+class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+>
+Available Vehicles Inventory
+</h2>
+<!-- CTA -->
+
+<div class="flex justify-end">
+  <a href="/registervechule">
+  <button class="px-4 py-2 mx-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-coral border border-transparent rounded-lg active:bg-coral hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray flex">
+    Add Vehicle
+  </button>
+</a>
+</div>
+<h4
+class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"
+>
+Vehicle Fleet Overview
+</h4>
+<div class="w-full overflow-hidden rounded-lg shadow-xs">
+<div class="w-full overflow-x-auto">
+  <table  id="newrequest" class="w-full whitespace-no-wrap">
+    <thead>
+      <tr
+        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+      >
+        <th class="px-4 py-3">Fleet</th>
+        <th class="px-4 py-3">Registration</th>
+        <th class="px-4 py-3">Model</th>
+        <th class="px-4 py-3">Mileage</th>
+        <th class="px-4 py-3">Lease End Date</th>
+        <th class="px-4 py-3">Action</th>
+
+      </tr>
+    </thead>
+    <tbody
+      class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
+    >
+    {% for vechule in vechules%}
+      <tr class="text-gray-700 dark:text-gray-400">
+        <td class="px-4 py-3 text-sm">
+          {{vechule.id}}
+        </td>
+        <td class="px-4 py-3 text-sm">
+          {{vechule.immatriculation}}
+        </td>
+        <td class="px-4 py-3 text-xs">
+            {{vechule.modele}}
+        </td>
+        <td class="px-4 py-3 text-sm">
+            {{vechule.km}}
+        </td>
+        <td class="px-4 py-3 text-sm">
+          6/10/2020
+        </td>
+        <td class="px-4 py-3">
+          <div class="flex items-center space-x-4 text-sm">
+          
+            <a href="/lieviewvechule/{{vechule.id}}">
+            <button
+              class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-gray-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+              aria-label="Edit"
+            >
+            <i class="fas fa-eye"></i>
+
+            </button>
+            <a href="/deletevechule/{{vechule.id}} ">
+            <button
+              class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-gray-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+              aria-label="Delete"
+            >
+              <svg
+                class="w-5 h-5"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+          </a>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>
+{% endblock %}

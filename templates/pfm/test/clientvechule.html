@@ -1,0 +1,81 @@
+
+{% extends 'pfm/test/mainemploye.html' %}
+
+{% block content %}
+
+
+
+<h2
+              class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+            >
+            Client Vehicle Inventory
+            </h2>
+            <!-- CTA -->
+            
+
+            <!-- With actions -->
+            <h4
+              class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"
+            >
+            Client Vehicle List
+            </h4>
+            <div class="w-full overflow-hidden rounded-lg shadow-xs">
+                <div class="w-full overflow-x-auto">
+                  <table  id="newrequest" class="w-full whitespace-no-wrap">
+                    <thead>
+                      <tr
+                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+                      >
+                        <th class="px-4 py-3">Fleet</th>
+                        <th class="px-4 py-3">Registration</th>
+                        <th class="px-4 py-3">Model</th>
+                        <th class="px-4 py-3">Mileage</th>
+                        <th class="px-4 py-3">Owner</th>
+                        <th class="px-4 py-3">Lease End Date</th>
+                       
+                      </tr>
+                    </thead>
+                    <tbody
+                      class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
+                    >
+                    {% for vechule in vechules%}
+                      <tr class="text-gray-700 dark:text-gray-400">
+                      
+                        <td class="px-4 py-3 text-sm">
+                          {{vechule.id}}
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                          {{vechule.immatriculation}}
+                        </td>
+                        <td class="px-4 py-3 text-xs">
+                          {{vechule.modele}}
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                          {{vechule.km}}
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                            {{vechule.client.user.username}}
+                          </td>
+                        <td class="px-4 py-3 text-sm">
+                          {{vechule.fin_liv}}
+                        </td>
+                     
+                      </tr>
+                  {% endfor %}
+  
+                    </tbody>
+                  </table>
+                </div>
+              
+                
+                  <!-- Pagination -->
+               
+                </div>
+              </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
+{% endblock %}

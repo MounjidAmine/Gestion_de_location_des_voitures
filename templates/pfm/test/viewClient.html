@@ -1,0 +1,433 @@
+{% extends 'pfm/test/mainclient.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+      <style>
+        .flex {
+          display: flex;
+        }
+        
+        .justify-end {
+          justify-content: flex-end;
+        }
+        
+        .px-4 {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        
+        .py-2 {
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+        }
+        
+        .text-sm {
+          font-size: 0.875rem;
+        }
+        
+        .font-medium {
+          font-weight: 500;
+        }
+        
+        .leading-5 {
+          line-height: 1.25rem;
+        }
+        
+        .text-white {
+          color: #fff;
+        }
+        
+        .transition-colors {
+          transition-property: background-color, border-color, color, fill, stroke;
+          transition-duration: 150ms;
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .duration-150 {
+          transition-duration: 150ms;
+        }
+        
+        .bg-coral {
+          background-color: coral;
+        }
+        
+        .border {
+          border-width: 1px;
+        }
+        
+        .border-transparent {
+          border-color: transparent;
+        }
+        
+        .rounded-lg {
+          border-radius: 0.5rem;
+        }
+        
+        .active\\:bg-coral:active {
+          background-color: coral;
+        }
+        
+        .hover\\:bg-gray-700:hover {
+          background-color: #4a5568;
+        }
+        
+        .focus\\:outline-none:focus {
+          outline: none;
+        }
+        
+        .focus\\:shadow-outline-gray:focus {
+          box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.5);
+        }
+        
+        .mx-2 {
+          margin-left: 0.5rem;
+          margin-right: 0.5rem;
+        }
+        
+        
+        
+      </style>
+
+            <h2
+              class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+            >
+            Vehicle details
+            </h2>
+            <!-- CTA -->
+            <div
+            class="flex items-center justify-between p-4 mb-8 text-sm font-semibold dark:text-white light:text-black bg-gray-150 rounded-lg shadow-md focus:outline-none focus:shadow-outline-black"
+              
+            >
+            <form action="{% url 'viewClient' vechule.id %}" method="POST">
+              {% csrf_token %}
+              <div class="flex items-center">
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  ></path>
+                </svg>
+                <span>This page displays the detailed information of the selected vehicle. You can view the vehicle details and submit a replacement vehicle request using the form below.</span>
+              </div>
+            </div>            
+
+            <h4
+              class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"
+            >
+              Vehicle informations
+            </h4>
+            <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+              <div>
+                <div class="flex">
+                  <div class="flex-1 mr-2 my-2">
+                    <label class="block text-sm">
+                      <span class="text-gray-700 dark:text-gray-400">Fleet</span>
+                      <input value="{{vechule.id}}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                    </label>
+                  </div>
+                  <div class="flex-1 ml-2 my-2">
+                    <label class="block text-sm">
+                      <span class="text-gray-700 dark:text-gray-400">Registration</span>
+                      <input value="{{vechule.immatriculation}}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                    </label>
+                  </div>
+                </div>
+            
+                <div class="flex mt-4">
+                  <div class="flex-1 mr-2 my-4">
+                    <label class="block text-sm">
+                      <span class="text-gray-700 dark:text-gray-400">Model</span>
+                      <input value="{{vechule.modele}}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                    </label>
+                  </div>
+                  <div class="flex-1 ml-2 my-4">
+                    <label class="block text-sm">
+                      <span class="text-gray-700 dark:text-gray-400">Mileage</span>
+                      <input value="{{vechule.km}}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                    </label>
+                  </div>
+                </div>
+            
+                <div class="flex mt-4">
+                  <div class="flex-1 mr-2 my-4">
+                    <label class="block text-sm">
+                      <span class="text-gray-700 dark:text-gray-400">Lease End Date</span>
+                      <input value="{{vechule.fin_liv }}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                    </label>
+                  </div>
+                  <div class="flex-1 mr-2 my-4">
+                  </div>
+                </div>
+                <div id="initial-fields">
+                <div class="flex justify-end ">
+                  <a href="/vechulefleet">
+                    <button type="button" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-coral border border-transparent rounded-lg active:bg-coral hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray flex">
+                      Go back
+                    </button>
+                  </a>
+                
+                </div>
+                <br>
+
+                  <div class="flex justify-end ">
+                    <div>
+                      <button id="submit-replacement-btn" type="button"  class="px-4 py-2 mx-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-coral border border-transparent rounded-lg active:bg-coral hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray flex">
+                       Replacement Vehicle Request
+                      </button>
+                    </div>
+
+                    <div>
+                      <button id="other-requests-btn" type="button" class="px-4 py-2  text-sm font-medium leading-5 text-white transition-colors duration-150 bg-coral border border-transparent rounded-lg active:bg-coral hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray flex">
+                        Other Requests
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <div id="replacement-fields" style="display: none;">
+
+                <div id="initial-fields">
+                  </br>
+                   <hr class="dark:border-gray-600 dark:bg-gray-700 ">
+                <div class="flex mt-4">
+                  <div class="flex-1 mr-2 my-4">
+                    <label class="block text-sm">
+                      <span class="text-gray-700 dark:text-gray-400">Pick-up Date</span>
+                      <input name="date" id="pickup-date" pattern="\d{4}-\d{2}-\d{2}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="date" />
+                    </label>
+                  </div>
+
+                  <div class="flex-1 ml-2 my-4">
+                    <label class="block text-sm">
+                      <span class="text-gray-700 dark:text-gray-400">Issue Type</span>
+                      <select name="issuetype" id="issue-type" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                        <option>Accident</option>
+                        <option>Repair</option>
+                        <option>Maintenance</option>
+                      </select>
+                    </label>
+                  </div>
+                </div>
+            
+                <div class="flex justify-end">
+                  <button type="submit" id="save-demand-btn" class="px-4 py-2 mx-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-coral border border-transparent rounded-lg active:bg-coral hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray flex mt-6">
+                    Save Demand
+                  </button>
+                </form>
+                  <button type="button" id="go-back-btn" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-coral border border-transparent rounded-lg active:bg-coral hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray flex mt-6">
+                    Go Back
+                  </button>
+                </div>
+              </div>
+            </div>
+            <form action="{% url 'viewClient' vechule.id %}" method="POST">
+              {% csrf_token %}
+            <div id="others-fields" style="display: none;">
+              <div id="initial-fields">
+              </br>
+               <hr class="dark:border-gray-600 dark:bg-gray-700 ">
+               
+              
+              <div class="mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">
+                  Other Requests
+                </span>
+                <div class="mt-2">
+                  <label
+                    class="inline-flex items-center text-gray-600 dark:text-gray-400"
+                  >
+                    <input
+                      type="radio"
+                      class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                      value="sinistre"
+                      id="sinistre"
+                      name="otherrequests"
+                    />
+                    <span class="ml-2">Sinistre</span>
+                  </label>
+                  <label
+                    class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400"
+                  >
+                    <input
+                      type="radio"
+                      class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                      value="reparation"
+                      id="reparation"
+                      name="otherrequests"
+                    />
+                    <span class="ml-2">Réparation</span>
+                  </label>
+                  <label
+                    class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400"
+                  >
+                    <input
+                      type="radio"
+                      class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                      value="other" id="other"
+                      name="otherrequests"
+                    />
+                    <span class="ml-2">Other</span>
+                  </label>
+                </div>
+              </div>
+
+        </div>
+          <div id="specific-fields-1" style="display: none;">
+            <!-- Champs spécifiques pour Sinistre -->
+            <div class="flex mt-4">
+              <div class="flex-1 ml-2 my-4">
+                <label class="block text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">Date d'incident</span>
+                  <input name="dateincident" pattern="\d{4}-\d{2}-\d{2}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"  type="date"  />
+                </label>
+              </div>
+              <div class="flex-1 ml-2 my-4">
+                <label class="block text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">Lieu d'incident</span>
+                  <input name="lieu_incident" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                </label>
+              </div>
+            </div>
+
+            <div class="flex mt-4">
+              <div class="flex-1 ml-2 my-4">
+                <label class="block text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">Description du sinistre</span>
+                  <textarea name="Description" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"></textarea>
+                </label>
+              </div>
+            </div>
+            <div class="flex mt-4"></div>
+             <div class="flex-1 mr-2 my-4">
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Joindre constat</span>
+                <input type="file" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+              </label>
+             </div>
+          </div>
+          
+          <div id="specific-fields-2" style="display: none;">
+            <!-- Champs spécifiques pour Réparation -->
+            <div class="flex mt-4">             
+              <div class="flex-1 ml-2 my-4">
+                <label class="block text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">Description du problème</span>
+                  <textarea name="Description" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"></textarea>
+                </label>
+              </div>
+          </div>
+
+          <div class="flex mt-4">
+            <div class="flex-1 ml-2 my-4">
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Type de Réparation nécessaire</span>
+                <input name="type_de_reparation" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+              </label>
+            </div>
+          </div>
+        </div>
+          
+          <div id="specific-fields-3" style="display: none;">
+            <!-- Champs spécifiques pour Autre -->
+            <div class="flex mt-4">
+              <div class="flex-1 ml-2 my-4">
+                <label class="block text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">Description du problème</span>
+                  <textarea class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"></textarea>
+                </label>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="flex justify-end">
+              <button type="submit" id="save-demand-btnn" class="px-4 py-2 mx-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-coral border border-transparent rounded-lg active:bg-coral hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray flex">
+                Save Demand
+              </button>
+              
+              <button id="go-back-btnn" type="button" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-coral border border-transparent rounded-lg active:bg-coral hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray flex">
+                Go Back
+              </button>
+          </div>
+        </div>
+        </div>
+      </form>
+      
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script>
+       document.getElementById('submit-replacement-btn').addEventListener('click', function() {
+        document.getElementById('initial-fields').style.display = 'none';
+        document.getElementById('replacement-fields').style.display = 'block';
+      });
+    
+      document.getElementById('go-back-btn').addEventListener('click', function() {
+        document.getElementById('initial-fields').style.display = 'block';
+        document.getElementById('replacement-fields').style.display = 'none';
+        document.getElementById('others-fields').style.display = 'none';
+      });
+    
+      document.getElementById('other-requests-btn').addEventListener('click', function() {
+        document.getElementById('initial-fields').style.display = 'none';
+        document.getElementById('replacement-fields').style.display = 'none';
+        document.getElementById('others-fields').style.display = 'block';
+      });
+
+      document.getElementById('go-back-btnn').addEventListener('click', function() {
+        document.getElementById('initial-fields').style.display = 'block';
+        document.getElementById('replacement-fields').style.display = 'none';
+        document.getElementById('others-fields').style.display = 'none';
+      });
+      
+
+      // Obtenez une référence des boutons radio
+var sinistreOption = document.getElementById('sinistre');
+var reparationOption = document.getElementById('reparation');
+var otherOption = document.getElementById('other');
+
+// Obtenez les éléments des champs spécifiques
+var specificFields1 = document.getElementById('specific-fields-1');
+var specificFields2 = document.getElementById('specific-fields-2');
+var specificFields3 = document.getElementById('specific-fields-3');
+
+// Ajoutez des écouteurs d'événements aux boutons radio
+sinistreOption.addEventListener('change', function() {
+  if (sinistreOption.checked) {
+    specificFields1.style.display = 'block';
+    specificFields2.style.display = 'none';
+    specificFields3.style.display = 'none';
+  }
+});
+
+reparationOption.addEventListener('change', function() {
+  if (reparationOption.checked) {
+    specificFields1.style.display = 'none';
+    specificFields2.style.display = 'block';
+    specificFields3.style.display = 'none';
+  }
+});
+
+otherOption.addEventListener('change', function() {
+  if (otherOption.checked) {
+    specificFields1.style.display = 'none';
+    specificFields2.style.display = 'none';
+    specificFields3.style.display = 'block';
+  }
+});
+
+
+  </script>
+
+  </body>
+</html>
+
+
+{% endblock %}

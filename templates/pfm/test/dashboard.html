@@ -1,0 +1,170 @@
+
+{% extends 'pfm/test/main.html' %}
+{% block content %}
+
+<h2
+class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+>
+Dashboard
+</h2>
+<!-- CTA -->
+
+<!-- Cards -->
+<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+<!-- Card -->
+<div
+  class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+>
+  <div
+    class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500"
+  >
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+      <path
+        d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
+      ></path>
+    </svg>
+  </div>
+  <div>
+    <p
+      class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+    >
+      Number of clients
+    </p>
+    <p
+      class="text-lg font-semibold text-gray-700 dark:text-gray-200" id="client_number"
+    >
+    {{client_number}}
+    </p>
+  </div>
+</div>
+<!-- Card -->
+<div
+  class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+>
+  <div
+    class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500"
+  >
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+      <path
+        fill-rule="evenodd"
+        d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+        clip-rule="evenodd"
+      ></path>
+    </svg>
+  </div>
+  <div>
+    <p
+      class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+    >
+      Total accounts
+    </p>
+    <p
+      class="text-lg font-semibold text-gray-700 dark:text-gray-200"
+    >
+    {{total}}
+    </p>
+  </div>
+</div>
+<!-- Card -->
+<div
+  class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+>
+  <div
+    class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500"
+  >
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+      <path
+      d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
+      ></path>
+    </svg>
+  </div>
+  <div>
+    <p
+      class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+    >
+      Number of employees
+    </p>
+    <p
+      class="text-lg font-semibold text-gray-700 dark:text-gray-200" id="employe_number"
+    >
+      {{employe_number}}
+    </p>
+  </div>
+</div>
+<!-- Card -->
+
+</div>
+
+<!-- New Table -->
+<div class="w-full overflow-hidden rounded-lg shadow-xs">
+<div class="w-full overflow-x-auto">
+  <table id="data-table" class="w-full whitespace-no-wrap">
+    <thead>
+      <tr
+        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+      >
+        <th class="px-4 py-3">Account ID</th>
+        <th class="px-4 py-3">User</th>
+      
+        <th class="px-4 py-3"> Creation Date</th>
+      </tr>
+    </thead>
+    <tbody
+      class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
+    > 
+    {% for client in clients %}
+      <tr class="text-gray-700 dark:text-gray-400">
+        <td class="px-4 py-3 text-sm">
+          {{client.user.id}}
+        </td>
+        <td class="px-4 py-3">
+          <div class="flex items-center text-sm">
+            <div>
+              <p class="font-semibold">{{client.user.first_name}}</p>
+              <p class="text-xs text-gray-600 dark:text-gray-400">
+                {{client.user.last_name}}
+              </p>
+            </div>
+          </div>
+        </td>
+       
+        <td class="px-4 py-3 text-sm">
+          {{client.creation_date}}
+        </td>        
+      </tr>
+    {% endfor %}
+    {% for employe in employes %}
+    <tr class="text-gray-700 dark:text-gray-400">
+      <td class="px-4 py-3 text-sm">
+        {{employe.user.id}}
+      </td>
+      <td class="px-4 py-3">
+        <div class="flex items-center text-sm">
+          <div>
+            <p class="font-semibold">{{employe.user.first_name}}</p>
+            <p class="text-xs text-gray-600 dark:text-gray-400">
+              {{employe.user.last_name}}
+            </p>
+          </div>
+        </div>
+      </td>
+     
+      <td class="px-4 py-3 text-sm">
+        {{employe.creation_date}}
+      </td>
+    </tr>
+  {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div
+  class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
+>
+ 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Pagination -->
+ 
+</div>
+</div>
+{% endblock %}

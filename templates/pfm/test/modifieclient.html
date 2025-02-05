@@ -1,0 +1,83 @@
+{% extends 'pfm/test/main.html' %}
+
+{% block content %}
+<h4
+class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"
+>
+Form
+</h4>
+<form method="POST" action="{% url 'user_update' clients.user.id %}">
+    {% csrf_token %}
+
+<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+
+<div class="flex">
+  <div class="flex-1 mr-2 my-2">
+    <label class="block text-sm">
+      <span class="text-gray-700 dark:text-gray-400">First Name</span>
+      <input
+        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+        placeholder="First Name" name="first_name" value="{{clients.user.first_name}}"
+      />
+    </label>
+  </div>
+  <div class="flex-1 ml-2 my-2">
+    <label class="block text-sm">
+      <span class="text-gray-700 dark:text-gray-400">Last Name</span>
+      <input
+        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+        placeholder="Last Name"  name="last_name" value="{{clients.user.last_name}}" 
+      />
+    </label>
+  </div>
+</div>
+
+<div class="flex mt-4">
+  <div class="flex-1 mr-2 my-4">
+    <label class="block text-sm">
+      <span class="text-gray-700 dark:text-gray-400">Username</span>
+      <input
+        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+        placeholder="Username" name="username" value="{{clients.user.username}}" 
+      />
+    </label>
+  </div>
+  <div class="flex-1 ml-2 my-4">
+    <label class="block text-sm">
+      <span class="text-gray-700 dark:text-gray-400">Email</span>
+      <input
+        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+        placeholder="Example@gmail.com" name="email" value="{{clients.user.email}}" 
+      />
+    </label>
+  </div>
+</div>
+<label class="block mt-4 text-sm">
+  <span class="text-gray-700 dark:text-gray-400">
+    Number of vehicles
+  </span>
+  <input
+  class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-gray-400 focus:outline-none focus:shadow-outline-gray dark:focus:shadow-outline-gray form-input"
+  placeholder="Number of vehicles" name="nombre_voiture" value="{{clients.nombre_de_voiture}}"
+/>
+</label>
+
+
+<div class="flex justify-end">
+  <button
+  
+    class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-gray-700 focus:outline-none focus:shadow-outline-gray flex mt-6"
+  >
+    Update
+  </button>
+</div> 
+</form>
+</div>
+
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>
+{% endblock %}

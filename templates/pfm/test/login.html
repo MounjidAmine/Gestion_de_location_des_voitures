@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Webpage Design</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <img class="background-image" src="../static/images/action.jpg" alt="action">
+    <div class="main">
+        <div class="navbar">
+            
+   
+        </div> 
+        <div class="content">
+            <h1>Discover <br><span>Our Platform</span> </h1>
+        </br>
+            <p class="par">Welcome to our website dedicated to the clients, employees, and administrators </br> as CarServ Company. Log in to your account to access a range of personalized </br>  features and enjoy an optimal management experience.</p>
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="form">
+                    <h2>Login Here</h2>
+                    <input type="text" name="username" placeholder="Enter Username Here">
+                    <input type="password" name="password" placeholder="Enter Password Here">
+                    <button class="btnn" type="submit">Login</button>
+
+                    <p class="link">
+                        <a href="/reset_password">Forgot your password? </a> 
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+      
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</body>
+</html>

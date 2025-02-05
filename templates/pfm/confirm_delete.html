@@ -1,0 +1,6 @@
+<h1>Confirmation de suppression</h1>
+<p>Voulez-vous vraiment supprimer le client : {{ client.user.first_name  }}  {{ client.user.last_name  }}</p>
+<form action="{% url 'destroy' client.user.id %}" method="post">
+  {% csrf_token %}
+  <input type="submit" value="Confirmer la suppression">
+</form>
