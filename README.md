@@ -35,7 +35,7 @@
 
 1. **Cloner le projet**  
    ```bash
-   git clone https://github.com/votre-repo/carserv.git
+   git clone https://github.com/Gestion_de_location_des_voitures/carserv.git
    cd carserv
    ```
 
